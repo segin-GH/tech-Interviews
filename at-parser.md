@@ -1,58 +1,70 @@
-## AT commands
+# AT Commands: Modem Communication Challenge
 
-The communication between user and modem is usually a serial type of communication with usage by way of AT commands.
+Modem communication often relies on **AT commands**, which are short text strings used to control modem functions such as dialing, hanging up, and managing connection parameters. These commands typically use serial communication and are categorized into four main types:
 
-AT command set, or AT commands are the most common way to control your modem. They are a command set consisting of a series of short text strings which
-can be combined to produce operations such as dialing, hanging up, and changing the parameters of the connection.
+1. **Set Commands**: `AT+<cmd>=<value>` – Store values.  
+   Example: `AT+CREG=1`
 
-There are basically 4 Types of at-cmd's
+2. **Get Commands**: `AT+<cmd>?` – Retrieve stored values.  
+   Example: `AT+CREG?`
 
-1. Set Commands - AT+<cmd>=<value> - Used to store values.
-```
-AT+CREG=1
-```
+3. **Test Commands**: `AT+<cmd>=?` – Determine the range of supported values.  
+   Example: `AT+CREG=?`
 
-2. Get Commands - AT+<cmd>? - Used to determine stored values.
-```
-AT+CREG?
-```
+4. **Execution Commands**: `AT+<cmd>` – Invoke a specific function.  
+   Example: `AT+CREG`
 
-3. Test Commands - AT+<cmd>=? - used to determine range of values supported.
-```
-AT+CREG=?
-```
+## Problem Breakdown:
 
-4. Execution commands - AT+<cmd>  - used to invoke a particular function.
-```
-AT+CREG
-```
+### Objective:
+Design a system to manage AT commands efficiently, including parsing, storage, retrieval, and error handling. Implement the following functionalities:
 
+---
 
-# Part 1: Command Type Parser
-Write a function that can identify what type of AT command is given as input. The function should categorize the command as one of the following:
-    1. Set Command (e.g., AT+CREG=1)
-    2. Get Command (e.g., AT+CREG?)
-    3. Test Command (e.g., AT+CREG=?)
-    4. Execution Command (e.g., AT+CREG)
+### **Part 1: Command Type Parser**
+Write a function to identify the type of an AT command based on its structure. The function should classify the command into one of the following categories:
+- Set Command (e.g., `AT+CREG=1`)
+- Get Command (e.g., `AT+CREG?`)
+- Test Command (e.g., `AT+CREG=?`)
+- Execution Command (e.g., `AT+CREG`)
 
-# Part 2: Command Storage Mechanism
-Create a system to store multiple AT commands. This could be as simple as storing the commands in a dictionary or another data structure that makes it easy to retrieve them later.
+---
 
-# Part 3: Command Search Function
-Implement a search function to look up a specific AT command in the stored data. If the command exists, return its details 
-(e.g., type, stored value, or additional info). If it doesn't exist, return an appropriate message.
+### **Part 2: Command Storage Mechanism**
+Develop a system to store and manage multiple AT commands. Use a data structure like a dictionary or a similar mechanism that allows:
+- Storing the commands efficiently.
+- Retrieving commands and their details based on user queries.
 
-# Part 4
-Add robust error handling to manage situations like:
-    - Invalid AT commands.
-    - Trying to search for a command that doesn’t exist.
-    - Unexpected inputs (e.g., empty strings or malformed commands).
+---
 
-Make sure the system provides clear error messages to the user.
+### **Part 3: Command Search Function**
+Implement a search functionality that allows users to:
+- Look up a specific AT command in the stored data.
+- Return details such as its type, stored value, or any additional information.
+- Provide a clear message if the command doesn’t exist.
 
+---
 
+### **Part 4: Error Handling**
+Incorporate robust error handling to ensure the system can manage unexpected inputs and errors gracefully. For example:
+- Handle invalid or malformed AT commands.
+- Return meaningful error messages for empty strings or unsupported command formats.
+- Provide clear feedback when trying to search for a nonexistent command.
 
+---
 
+### **Bonus Points:**
+- Design the system for scalability, so it can handle a large number of commands.
+- Include unit tests for the core functionalities (command parsing, storage, search, and error handling).
+- Optimize for performance and readability.
 
+---
 
+### **Evaluation Criteria:**
+- **Correctness:** Does the solution categorize, store, and retrieve AT commands correctly?
+- **Clarity:** Are the code and error messages easy to understand and maintain?
+- **Robustness:** Does the solution handle edge cases and unexpected inputs effectively?
+- **Scalability:** Can the system handle more commands or adapt to additional functionality in the future?
+
+This task is designed to evaluate your problem-solving skills, coding ability, and attention to detail. Feel free to use any programming language of your choice!
 
